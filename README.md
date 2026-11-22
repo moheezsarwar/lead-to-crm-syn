@@ -1,26 +1,32 @@
 # Lead to CRM Sync
 
-A proof of concept for Maple Comfort HVAC, a sample home services company. New leads from the website form land in HubSpot automatically, without duplicates, and the sales team gets a Slack alert for each one.
+Demo video (2 min): [your Loom link]
 
-## The problem
-Leads came in through a web form and were copied into the CRM by hand. Some got missed, some were entered twice, and nobody knew a hot lead had arrived until hours later.
+A proof of concept I built for a made up company, Maple Comfort HVAC.
 
-## What it does
-1. Reads new leads from a CSV export of the web form
-2. Skips any lead without an email address
-3. Checks HubSpot for an existing contact with the same email, and skips duplicates
-4. Creates a contact and a linked deal for each new lead
-5. Posts an alert to a Slack channel for each new lead, plus a summary
+When someone asks for a quote on the website, this script adds them to HubSpot as a contact with a deal and posts an alert in Slack. If they're already in HubSpot, it skips them.
 
-## Built with
-Python, HubSpot CRM API, Slack incoming webhooks
+## What a run looks like
 
-## Run it
+```
+NEW   Sarah Chen: contact and deal created
+NEW   Mike Patel: contact and deal created
+NEW   Lisa Romano: contact and deal created
+SKIP  Tom Nguyen: no email
+SKIP  Mike Patel: already in CRM
+Lead sync done: 3 new, 2 skipped
+```
+
+## Run it yourself
+
 1. Copy `.env.example` to `.env` and add your HubSpot service key and Slack webhook URL
 2. `pip install requests python-dotenv`
 3. `python3 sync_leads.py`
 
-## What it doesn't handle yet
-- Leads only arrive as a CSV file, not live from the form
-- Duplicates are matched by email only, not by phone or name
-- It doesn't update an existing contact when a lead returns with new details
+## What it doesn't do yet
+
+- Leads come from a CSV file, not live from the form
+- Duplicates are matched by email only
+- It doesn't update a contact who comes back with new details
+
+Built with Python, the HubSpot CRM API and Slack webhooks.
