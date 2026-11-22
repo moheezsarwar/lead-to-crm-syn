@@ -1,0 +1,6 @@
+first_name,last_name,email,phone,service,estimated_value
+Sarah,Chen,sarah.chen@example.com,705-555-0101,Furnace replacement,6500
+Mike,Patel,mike.patel@example.com,705-555-0102,AC repair,450
+Lisa,Romano,lisa.romano@example.com,705-555-0103,Heat pump install,9800
+Tom,Nguyen,,705-555-0104,Duct cleaning,350
+Mike,Patel,mike.patel@example.com,705-555-0102,AC repair,450
