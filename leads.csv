@@ -1,6 +1,6 @@
-first_name,last_name,email,phone,service,estimated_value
-Sarah,Chen,sarah.chen@example.com,705-555-0101,Furnace replacement,6500
-Mike,Patel,mike.patel@example.com,705-555-0102,AC repair,450
-Lisa,Romano,lisa.romano@example.com,705-555-0103,Heat pump install,9800
-Tom,Nguyen,,705-555-0104,Duct cleaning,350
-Mike,Patel,mike.patel@example.com,705-555-0102,AC repair,450
+first_name,last_name,email,phone,service,estimated_value,message
+Priya,Shah,priya.shah@example.com,416-555-0101,Furnace repair,450,"Furnace died last night and it's -15 outside. We have a newborn at home."
+Marcus,Lee,marcus.lee@example.com,905-555-0144,AC tune-up,180,"Want to book a spring AC tune-up sometime in April. No rush."
+Dana,Okafor,,647-555-0199,Duct cleaning,300,"Can someone call me back about duct cleaning?"
+Tom,Becker,tom.becker@example.com,289-555-0122,Thermostat install,250,"Thinking about a smart thermostat. What brands do you install?"
+Priya,Shah,priya.shah@example.com,416-555-0101,Furnace repair,450,"Following up, still no heat. Please call ASAP."
