@@ -1,15 +1,12 @@
 """
-Lead to CRM sync with AI triage. Demo for a made-up company, Maple Comfort HVAC.
-
 1. Reads leads from leads.csv.
-2. Skips leads with no email, and duplicates (in the file or already in HubSpot).
+2. Skips leads with no email, and duplicates (in the file or already in HubSpot)
 3. Asks an IBM watsonx.ai Granite model to mark each new lead URGENT or ROUTINE
    and write a one-line summary. If the AI fails or gives an odd answer, the
-   lead is marked "unknown" and still goes into HubSpot.
-4. Creates a HubSpot contact and a linked deal.
-5. Posts Slack alerts, urgent leads first, then a summary.
-
-Secrets live in .env, which is not on GitHub.
+   lead is marked "unknown" and still goes into HubSpot
+4. Creates a HubSpot contact and a linked deal
+5. Posts Slack alerts, urgent leads first, then a summary
+Secrets live in .env, which is not on GitHub
 """
 
 import csv
@@ -22,7 +19,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ---------- Settings (secrets come from .env) ----------
+# Settings (secrets come from .env)
 HUBSPOT_TOKEN = os.getenv("HUBSPOT_TOKEN", "").strip()
 SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "").strip()
 
@@ -53,7 +50,7 @@ SYSTEM_PROMPT = (
 SORT_ORDER = {"URGENT": 0, "ROUTINE": 1, "UNKNOWN": 2}
 
 
-# ---------- HubSpot ----------
+# HubSpot
 def hubspot_headers():
     return {"Authorization": f"Bearer {HUBSPOT_TOKEN}", "Content-Type": "application/json"}
 
@@ -103,7 +100,7 @@ def create_deal(lead, name, contact_id, priority):
     return r.json()["id"]
 
 
-# ---------- AI: IBM watsonx.ai ----------
+# AI: IBM watsonx.ai
 _token = {"value": None, "expires_at": 0.0}
 
 
@@ -183,7 +180,7 @@ def label(priority):
     return {"URGENT": "URGENT", "ROUTINE": "routine"}.get(priority, "unknown")
 
 
-# ---------- Slack ----------
+# Slack 
 def post_to_slack(text):
     try:
         r = requests.post(SLACK_WEBHOOK_URL, json={"text": text}, timeout=TIMEOUT)
@@ -193,7 +190,7 @@ def post_to_slack(text):
         print(f"  (Slack warning: {e})")
 
 
-# ---------- Main ----------
+# Main
 def read_leads():
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
