@@ -78,4 +78,4 @@ Say 15 web leads a week at 4 minutes each to type in. That's about an hour a wee
 3. `python3 sync_leads.py --ai-test` checks the AI step only and writes nothing
 4. `python3 sync_leads.py` runs the full sync
 
-Built with Python, the HubSpot CRM API, Slack webhooks and IBM watsonx.ai, with AI assistance.
+Built with Python, the HubSpot CRM API, Slack webhooks and IBM watsonx.ai
